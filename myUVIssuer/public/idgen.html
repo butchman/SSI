@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Issuer Reference App</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/qrjs2@0.1.6/qrjs2.js"></script>
+  <script src="javascripts/index1.js"></script>
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+
+<body>
+<!--Navbar-->
+<nav id="navbar" class="navbar navbar-dark">
+  <a class="navbar-brand nav-element" href="#">משרד הפנים - מערכת יצירת תעודה מזהה דיגיטלית</a>
+  <a class="nav-link nav-element navbar-text" href="https://trinsic.id" target="_blank"><img id="logo" src="images/portaldemologo-pnim.png" alt="trinsic-logo"/></a>
+</nav>
+
+<!--Body-->
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <div class="content">
+        <h3>תהליך מקדים ליצירת תעודה</h3>
+        <p>
+        כדי להשתמש בתעודה דיגילית יש ליצור אותה תחילה<br/>
+        תהליך יצירת התעודה הוא תהליך חד פעמי<br/>
+        ישנן 2 דרכים עיקריות בהן מתבצע התהליך המקדים:
+        <ol>
+          <li>התהליך יכול להיות פיזי, כלומר מבקש התעודה מתייצב פיזית לזיהוי</li>
+          <li>זיהוי מבקש התעודה יכול להתבצע מרחוק</li>
+        </ol>
+
+        לצרכי ההדגמה, לא נעסוק בתהליך המתבצע כדי לוודא שהאדם המגיע אכן זכאי לקבל תעודת זהות ונניח שאכן הוא זכאי
+
+        </p>
+
+      </div>
+    </div>
+    <div class="col-1"></div>
+    <div style="margin-top:150px; font-size:4em;">>></div>
+    <div class="col-5">
+      <div class="content">
+        <h4>הזינו הפרטים ליצירת תעודה מזהה</h4>
+        <div class="form-group">
+          <label for="issue-id">מספר מזהה:</label>
+          <input type="text" class="form-control" id="issue-id" disabled>
+        </div>
+        <div class="form-group">
+          <label for="issue-id-type">סוג תעודה:</label>
+          <select id="issue-id-type">
+            <option value="idcard">תעודת זהות</option>
+            <option value="rescard">כרטיס תושב</option>
+            <option value="municard">דיגיטל</option>
+            <option value="frgnpassport">דרכון זר</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="issue-name">שם:</label>
+          <input type="text" class="form-control" id="issue-name">
+        </div>
+        <div class="form-group">
+          <label for="issue-address">כתובת:</label>
+          <input type="text" class="form-control" id="issue-address">
+        </div>
+        <div class="form-group">
+          <label for="issue-city">עיר:</label>
+          <input type="text" class="form-control" id="issue-city">
+        </div>
+        <div class="form-group">
+          <label for="issue-dob">תאריך לידה:</label>
+          <input type="date" class="form-control" id="issue-dob">
+        </div>
+        <div class="form-group">
+          <label for="issue-doc">תאריך הפקה:</label>
+          <input type="date" class="form-control" id="issue-doc">
+        </div>
+        <div class="form-group">
+          <label for="issue-dov">תאריך תוקף:</label>
+          <input type="date" class="form-control" id="issue-dov">
+        </div>
+        <button type="submit" class="btn btn-primary submit-button" id="issue-submit" onclick="issueIDwithConnection()">יצירת תעודה</button>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+
+<div id="modal" class="modal">
+  <div id="modal-content">
+    <span id="close-button" onclick="closeModal()">&times;</span>
+    <p id="modal-text"></p>
+      <p>סרקו את הברקוד בעזרת אפליקציית הארנק הדיגיטלי שלכם:</p>
+    <div class="centered-spinner d-flex justify-content-center">
+      <div id="spinner" class="spinner-border centered-spinner" role="status">
+        <span class="sr-only centered-spinner">Loading...</span>
+      </div>
+      <img id="qrcode" src="" alt=" "/>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("modal");
+  const spinner = document.getElementById("spinner");
+  const qr = document.getElementById("qrcode");
+
+  const idnumInput = document.getElementById("issue-id");
+  idnumInput.value = createIID();
+
+  window.onclick = function(event) {
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+</script>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</body>
+
+</html>

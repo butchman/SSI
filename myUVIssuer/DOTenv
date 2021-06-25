@@ -1,0 +1,21 @@
+# ------------- Developer Credentials ----------------- #
+#ACCESSTOK='rZprQf65bNhqTb4vXE1pZcLuMSbOyn8-nodfhLRwLqY'
+ACCESSTOK='baN-tMx3aI_4v3dfG7i2WrOrXYjUbc1JzWhUINRaDDE'
+
+ACCESSTOKMLG='4QwC54sr-wb8THd_PGgoZyNTErOkHT8j2jUq4m6BAu4'
+
+# ------------- Credential Definition ----------------- #
+#CRED_DEF_ID='Yae4dZPe2Hq6bCC8uD7iTd:3:CL:215901:Default'
+CRED_DEF_ID='TzbaS8mXimZLbXUgQsdJDc:3:CL:218188:Default'
+
+CRED_DEF_ID_MLG='7B5DfP3TLJSiN833JzMeQR:3:CL:218753:Default'
+
+# ------------- Policy Id ----------------------------- #
+#POLICY_ID='47ffc1d4-874e-4cc4-ec4a-08d91a926e46'
+POLICY_ID='b92a4e0b-8e6e-4e73-3b9a-08d92746f8d6'
+
+# ------------- Sovrin Staging Schema ----------------- #
+#SCHEMA_ID='Yae4dZPe2Hq6bCC8uD7iTd:2:Passport:1.0'
+SCHEMA_ID='TzbaS8mXimZLbXUgQsdJDc:2:תעודת_זהות:1.0'
+
+SCHEMA_ID_MLG='7B5DfP3TLJSiN833JzMeQR:2:תעודת_הסמכה:1.0'

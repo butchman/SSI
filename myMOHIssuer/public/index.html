@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>מערכת נמר - קיוסק מידע</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/qrjs2@0.1.6/qrjs2.js"></script>
+  <script src="javascripts/index.js"></script>
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+
+<body>
+
+<!--Navbar-->
+<nav id="navbar" class="navbar navbar-dark">
+  <a class="navbar-brand nav-element" href="#">מערכת נמר - קיוסק מידע</a>
+  <a class="nav-link nav-element navbar-text" href="#" target="_blank"><img id="logo" src="images/portaldemologo-moh.png" alt="mlg-logo"/></a>
+</nav>
+
+<div style="margin-top:15px; text-align:center;">
+<h1>מערכת נמ"ר - קיוסק שירות עצמי</h1>
+</div>
+
+<!--Body-->
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-5">
+      <div class="content">
+        <h4>צרו חשבון כניסה למערכת</h4>
+        <div class="form-group">
+          <label for="fname">שם פרטי</label>
+          <input type="text" class="form-control" id="fname">
+        </div>
+        <div class="form-group">
+          <label for="sname">שם משפחה</label>
+          <input type="text" class="form-control" id="sname">
+        </div>
+        <div class="form-group">
+          <label for="idnumber">ת.ז.</label>
+          <input type="text" class="form-control" id="idnumber">
+        </div>
+        <div class="form-group">
+          <label for="address">כתובת</label>
+          <input type="text" class="form-control" id="address">
+        </div>
+        <div class="form-group">
+          <label for="dob">ת.לידה</label>
+          <input type="date" class="form-control" id="dob">
+        </div>
+        <button type="submit" class="btn btn-primary submit-button" id="login1" style="margin-right:10px;">התחברות לחשבון קיים</button>
+        <button type="submit" class="btn btn-primary submit-button" id="register1" >יצירת חשבון חדש</button>
+      </div>
+    </div>
+    <div class="col-1"></div>
+    <div style="margin-top:150px; font-size:4em;">או</div>
+    <div class="col-5">
+      <div class="content">
+        <h4>יש לכם אפליקציית ארנק דיגיטלי?</h4>
+        <button type="submit" class="btn btn-primary submit-button" id="verify-submit" onclick="verifyPersonRedirect()">לחצו וסרקו את הברקוד</button>
+        <div id="verification-accepted">
+          <h5>המידע אומת בהצלחה!</h5>
+          <div class="form-group">
+            <label for="verify-id">מספר מזהה:</label>
+            <input type="text" class="form-control" id="verify-id" disabled>
+          </div>
+          <div class="form-group">
+            <label for="verify-id-type">סוג תעודה:</label>
+            <select id="verify-id-type" disabled>
+              <option value="idcard">תעודת זהות</option>
+              <option value="rescard">כרטיס תושב</option>
+              <option value="municard">דיגיטל</option>
+              <option value="frgnpassport">דרכון זר</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="verify-name">שם:</label>
+            <input type="text" class="form-control" id="verify-name" disabled>
+          </div>
+          <div class="form-group">
+            <label for="verify-city">עיר:</label>
+            <input type="text" class="form-control" id="verify-city" disabled>
+          </div>
+          <div class="form-group">
+            <label for="verify-dob">תאריך לידה:</label>
+            <input type="date" class="form-control" id="verify-dob" disabled>
+          </div>
+          <div class="form-group">
+            <label for="verify-dov">תאריך תוקף:</label>
+            <input type="date" class="form-control" id="verify-dov" disabled>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+
+<div id="modal" class="modal">
+  <div id="modal-content">
+    <span id="close-button" onclick="closeModal()">&times;</span>
+    <p id="modal-text"></p>
+    <div class="centered-spinner d-flex justify-content-center">
+      <div id="spinner" class="spinner-border centered-spinner" role="status">
+        <span class="sr-only centered-spinner">Loading...</span>
+      </div>
+      <img id="qrcode" src="" alt=" "/>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("modal");
+  const modalText = document.getElementById("modal-text");
+  const spinner = document.getElementById("spinner");
+  const qr = document.getElementById("qrcode");
+  const accepted = document.getElementById("verification-accepted");
+
+  const acceptedName = document.getElementById("verify-name");
+  const acceptedIDType = document.getElementById("verify-id-type");
+  const acceptedID = document.getElementById("verify-id");
+  const acceptedValid = document.getElementById("verify-dov");
+
+  window.onclick = function(event) {
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+</script>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</body>
+
+</html>
