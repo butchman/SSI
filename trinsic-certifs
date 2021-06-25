@@ -1,0 +1,35 @@
+pnim
+credentials
+Credential Template
+תעודת_זהות
+Attributes
+ID
+IDtype
+Name
+Address
+City
+DOB
+Issued
+Valid
+Details
+
+
+Verification Template
+get person details short
+getpersondetailsmin1
+ID
+IDtype
+Name
+Valid
+
+Verification Template
+get person details
+getpersondetails
+ID
+IDtype
+Name
+City
+DOB
+Valid
+
+https://357de0303f63.ngrok.io/verifiedUVUser.html?userid=022085878&idtype=idcard&username=%D7%9E%D7%90%D7%99%D7%A8%20%D7%96%D7%95%D7%A9%D7%A0%D7%95%D7%91&valid=2025-06-01
