@@ -1,0 +1,1 @@
+[{"id": "nidsc1", "alias": "nat_id_cred", "name": "national ID", "schema_filename": "runners/creds/ipia1-schema-def.json", "cred_filename": "runners/creds/ipia1-cred-def.json"}, {"id": "ncovpass1", "alias": "nat-covid-pass", "name": "covid passport", "schema_filename": "runners/creds/ipia2-def.json", "cred_filename": "runners/creds/ipia2-ins.json"}]
