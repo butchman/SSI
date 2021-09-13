@@ -13,6 +13,8 @@ const http = require('http');
  */
 
 const port = normalizePort(process.env.PORT || '3000');
+const use_ngrok = process.env.ngrok || 1;
+const server_address = process.env.server || '127.0.0.1';
 app.set('port', port);
 
 /**
@@ -35,13 +37,27 @@ const cache = require('../model');
 const ngrok = require('ngrok');
 
 server.listen(port, async function () {
-  const url_val = await ngrok.connect(port);
-  console.log("============= \n\n" + url_val + "\n\n =========");
-  let response = await client.createWebhook({
-    url: url_val + "/webhook",  // process.env.NGROK_URL
-    type: "Notification"
-  });
-  cache.add("webhookId", response.id);
+	if (use_ngrok > 0) 
+	{
+		const url_val = await ngrok.connect(port);
+		console.log("============= \n\n" + url_val + "\n\n =========");
+		let response = await client.createWebhook({
+			url: url_val + "/webhook",  // process.env.NGROK_URL
+			type: "Notification"
+		});
+		cache.add("webhookId", response.id);
+	} 
+	else 
+	{
+		const url_val = server_address+":"+server.address().port;
+		console.log("============= \n\n" + url_val + "\n\n =========");
+		let response = await client.createWebhook({
+			url: url_val + "/webhook",  // process.env.NGROK_URL
+			type: "Notification"
+		});
+		cache.add("webhookId", response.id);
+	}
+  
   console.log('Listening on port %d', server.address().port);
 });
 server.on('error', onError);

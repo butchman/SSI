@@ -86,7 +86,8 @@ async function verifyPersonRedirect() {
     hideQRCode();
     closeModal();
     if (verification.state === "Accepted") {
-      var theURL = window.location.protocol + '//' + window.location.hostname + '/verifiedUVUser.html';
+      //var theURL = window.location.protocol + '//' + window.location.hostname + '/verifiedUVUser.html';
+	  var theURL = window.location.origin + '/verifiedUVUser.html';
       var theParams = '?userid=' + verification.proof.getpersondetailsmin1.attributes["ID"] + '&idtype=' + verification.proof.getpersondetailsmin1.attributes["IDtype"];
       theParams = theParams + '&username=' + verification.proof.getpersondetailsmin1.attributes["Name"] + '&valid=' + verification.proof.getpersondetailsmin1.attributes["Valid"];
       window.location.replace(theURL+theParams);

@@ -18,6 +18,7 @@ async function issueGreenPass2(anSTR1) {
       theID: userid[1],
       theName:namefix,
       theDOB:userdob[1],
+	  theHMO:'Maccabi',
       theType:'Covid-19',
       theManuf:'Pfizer',
       theIssued:"2021-01-01",

@@ -38,6 +38,7 @@ router.post('/issue', cors(), async function (req, res) {
       "ID": req.body.theID,
       "Name": req.body.theName,
       "DOB": req.body.theDOB,
+	  "HMO": req.body.theHMO,
       "Type": req.body.theType,
       "Manuf": req.body.theManuf,
       "Issued": req.body.theIssued,
