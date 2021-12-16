@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>משרד הבריאות - מערכת הנפקת דרכון ירוק</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/qrjs2@0.1.6/qrjs2.js"></script>
+  <script src="javascripts/index1.js"></script>
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+
+<script>
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const userid = urlParams.get('userid')
+  const idtype = urlParams.get('idtype')
+  const username = urlParams.get('username')
+  const useraddress = urlParams.get('address')
+  const usercity = urlParams.get('city')
+  const userdob = urlParams.get('dob')
+  const valid = urlParams.get('valid')
+
+  var userdata = encodeURIComponent(urlParams)
+
+  var cardtype = "דיגיטל";
+  switch (idtype) {
+  case 'idcard':
+    cardtype = "תעודת זהות";
+    break;
+  case 'rescard':
+    cardtype = "כרטיס תושב";
+    break;
+  case 'municard':
+     cardtype = "דיגיטל";
+    break;
+  case 'frgnpassport':
+    cardtype = "דרכון זר";
+    break;
+  }
+
+  var today = new Date();
+  var yyyy = today.getFullYear();
+
+  var dovLen = valid.length;
+  var dovSplit = valid.split("-");
+  var dovYear = 0;
+  if (dovLen === 10 && dovSplit.length === 3)
+    if (dovSplit[0].length === 4)
+      dovYear = parseInt(valid.substr(0, 4));
+    if (dovSplit[1].length === 4)
+      dovYear = parseInt(valid.substr(3, 4));
+    if (dovSplit[2].length === 4)
+      dovYear = parseInt(valid.substr(6, 4));
+
+  var isValid = "(התעודה שלך בתוקף)"
+  if (yyyy > dovYear)
+    isValid = "(התעודה שלך לא בתוקף)"
+
+  //var destStr = userid + '|' + idtype;
+
+</script>
+
+<body>
+
+<!--Navbar-->
+<nav id="navbar" class="navbar navbar-dark">
+  <a class="navbar-brand nav-element" href="#">משרד הבריאות - הנפקת תו ירוק</a>
+  <a class="nav-link nav-element navbar-text" href="#" target="_blank"><img id="logo" src="images/portaldemologo-moh.png" alt="mlg-logo"/></a>
+</nav>
+
+<!--Body-->
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-4">
+      <div class="content">
+        <h4>שלום <span id="uname"></span></h4>
+        <h4>מספר הזיהוי שלך הוא <span id="uidnum"></span></h4>
+        <h4>התחברת עם <span id="ucardtype"></span></h4>
+        <h4>הכתובת שלך היא <span id="uaddr"></span></h4>
+        <h4>תאריך הלידה שלך הוא <span id="udob"></span></h4>
+        <hr>
+        <h4>משמאל יופיעו כל התעודות להן הנכם זכאים. תוכלו להפיק תעודה דיגיטלית המעידה על זכאותכם עבור כל תעודת בריאות לה אתם זכאים.</h4>
+
+        <script>
+          document.getElementById("uname").innerHTML = username;
+          document.getElementById("uidnum").innerHTML = userid;
+          document.getElementById("ucardtype").innerHTML = cardtype + " " + isValid;
+          document.getElementById("uaddr").innerHTML = useraddress + " " + usercity;
+          document.getElementById("udob").innerHTML = userdob;
+
+        </script>
+      </div>
+    </div>
+    <div class="col-1"></div>
+    <div style="margin-top:150px; font-size:4em;">>></div>
+    <div class="col-5">
+      <div class="content">
+        <span id="certifpart"></span>
+        <script>
+
+        '" + row.id + ',' + row.email + "'
+
+          var thefiller = ''
+          thefiller = '<h4>הפקת תעודות בריאות דיגיטליות</h4>'
+          thefiller = thefiller + '<button type="submit" class="btn btn-primary submit-button" id="cybercertif2" data-arg1="1234" onclick="issueGreenPass3(\''
+          thefiller = thefiller + userdata + '\')" style="margin-right:10px;">תעודת חיסון קורונה דיגיטלית</button>'
+          thefiller = thefiller + '<br/><br/><br/>'
+          thefiller = thefiller + '<button type="submit" class="btn btn-primary submit-button" id="cybercertif1" onclick="issueVaccineCert3()" style="margin-right:10px;">תעודת תו ירוק דיגיטלית</button>'
+          thefiller = thefiller + '<br/><br/><br/>'
+
+          document.getElementById("certifpart").innerHTML = thefiller;
+        </script>
+
+        <div id="verification-accepted">
+          <h5>המידע אומת בהצלחה!</h5>
+          <div class="form-group">
+            <label for="verify-id">מספר מזהה:</label>
+            <input type="text" class="form-control" id="verify-id" disabled>
+          </div>
+          <div class="form-group">
+            <label for="verify-id-type">סוג תעודה:</label>
+            <select id="verify-id-type" disabled>
+              <option value="idcard">תעודת זהות</option>
+              <option value="rescard">כרטיס תושב</option>
+              <option value="municard">דיגיטל</option>
+              <option value="frgnpassport">דרכון זר</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="verify-name">שם:</label>
+            <input type="text" class="form-control" id="verify-name" disabled>
+          </div>
+          <div class="form-group">
+            <label for="verify-city">עיר:</label>
+            <input type="text" class="form-control" id="verify-city" disabled>
+          </div>
+          <div class="form-group">
+            <label for="verify-dob">תאריך לידה:</label>
+            <input type="date" class="form-control" id="verify-dob" disabled>
+          </div>
+          <div class="form-group">
+            <label for="verify-dov">תאריך תוקף:</label>
+            <input type="date" class="form-control" id="verify-dov" disabled>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+
+<div id="modal" class="modal">
+  <div id="modal-content">
+    <span id="close-button" onclick="closeModal()">&times;</span>
+    <p id="modal-text"></p>
+    <div class="centered-spinner d-flex justify-content-center">
+      <div id="spinner" class="spinner-border centered-spinner" role="status">
+        <span class="sr-only centered-spinner">Loading...</span>
+      </div>
+      <img id="qrcode" src="" alt="QR code"/>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("modal");
+  const modalText = document.getElementById("modal-text");
+  const spinner = document.getElementById("spinner");
+  const qr = document.getElementById("qrcode");
+  const accepted = document.getElementById("verification-accepted");
+
+  const acceptedName = document.getElementById("verify-name");
+  const acceptedIDType = document.getElementById("verify-id-type");
+  const acceptedID = document.getElementById("verify-id");
+  const acceptedCity = document.getElementById("verify-city");
+  const acceptedDOB = document.getElementById("verify-dob");
+  const acceptedValid = document.getElementById("verify-dov");
+
+  window.onclick = function(event) {
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+</script>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</body>
+
+</html>

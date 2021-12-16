@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>משרד הבריאות - מערכת הנפקת דרכון ירוק</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/qrjs2@0.1.6/qrjs2.js"></script>
+  <script src="javascripts/index.js"></script>
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+
+<body>
+
+<!--Navbar-->
+<nav id="navbar" class="navbar navbar-dark">
+  <a class="navbar-brand nav-element" href="#">משרד הבריאות - הנפקת תו ירוק</a>
+  <a class="nav-link nav-element navbar-text" href="#" target="_blank"><img id="logo" src="images/portaldemologo-moh.png" alt="mlg-logo"/></a>
+</nav>
+
+<div style="margin-top:15px; text-align:center;">
+<h1>הנפקת תו ירוק למחוסנים</h1>
+</div>
+
+<!--Body-->
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+
+    <div class="col-5">
+      <div class="content">
+        <h4><u>ברוכים הבאים</u></h4>
+        <h4>על מנת להפיק תו ירוק עליך להציג תעודת זיהוי דיגיטלית של ממשלת ישראל וכן תעודה המעידה על חיסון בתוקף</h4>
+		<br/>
+        <h4>יש לכם אפליקציית ארנק דיגיטלי?</h4>
+        <button type="submit" class="btn btn-primary submit-button" id="verify-submit" onclick="verifyPersonRedirect()">לחצו וסרקו את הברקוד</button>
+        <div id="verification-accepted">
+          <h5>המידע אומת בהצלחה!</h5>
+          <div class="form-group">
+            <label for="verify-id">מספר מזהה:</label>
+            <input type="text" class="form-control" id="verify-id" disabled>
+          </div>
+          <div class="form-group">
+            <label for="verify-id-type">סוג תעודה:</label>
+            <select id="verify-id-type" disabled>
+              <option value="idcard">תעודת זהות</option>
+              <option value="rescard">כרטיס תושב</option>
+              <option value="municard">דיגיטל</option>
+              <option value="frgnpassport">דרכון זר</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="verify-name">שם:</label>
+            <input type="text" class="form-control" id="verify-name" disabled>
+          </div>
+          <div class="form-group">
+            <label for="verify-dov">תאריך תוקף:</label>
+            <input type="date" class="form-control" id="verify-dov" disabled>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col"></div>
+  </div>
+</div>
+
+<div id="modal" class="modal">
+  <div id="modal-content">
+    <span id="close-button" onclick="closeModal()">&times;</span>
+    <p id="modal-text"></p>
+    <div class="centered-spinner d-flex justify-content-center">
+      <div id="spinner" class="spinner-border centered-spinner" role="status">
+        <span class="sr-only centered-spinner">Loading...</span>
+      </div>
+      <img id="qrcode" src="" alt=" "/>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("modal");
+  const modalText = document.getElementById("modal-text");
+  const spinner = document.getElementById("spinner");
+  const qr = document.getElementById("qrcode");
+  const accepted = document.getElementById("verification-accepted");
+
+  const acceptedName = document.getElementById("verify-name");
+  const acceptedIDType = document.getElementById("verify-id-type");
+  const acceptedID = document.getElementById("verify-id");
+  const acceptedValid = document.getElementById("verify-dov");
+
+  window.onclick = function(event) {
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+</script>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</body>
+
+</html>
