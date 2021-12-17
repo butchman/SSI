@@ -2,28 +2,31 @@ async function issueGreenPass3(anSTR1) {
 
   var userdata = decodeURIComponent(urlParams)
 
+  //id_userid=000724057&id_username=מאיר+זושנוב&id_valid=2025-09-01&vac_userid=000724057&vac_username=מאיר+זושנוב&vac_valid=2021-12-31
+
   var data_arr = userdata.split("&");
   var userid = data_arr[0].split("=");
-  var idtype = data_arr[1].split("=");
-  var username = data_arr[2].split("=");
-  var useraddress = data_arr[3].split("=");
-  var usercity = data_arr[4].split("=");
-  var userdob = data_arr[5].split("=");
-  var valid = data_arr[6].split("=");
+  var username = data_arr[1].split("=");
 
   var namefix = username[1]
   namefix = namefix.replace("+", " ");
 
+  var today = new Date();
+  var today_short = today.toISOString().split("T")[0];
+
+  var next_year = new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+  var next_year_short = next_year.toISOString().split("T")[0]
+
+
   const certifdata = {
       theID: userid[1],
       theName:namefix,
-      theDOB:userdob[1],
-	    theHMO:'Maccabi',
-      theType:'Covid-19',
-      theManuf:'Pfizer',
-      theIssued:"2021-01-01",
-      theValid:"2021-12-31",
+	    theReason:'VACCINE',
+      theIssued:today_short,
+      theValid:next_year_short,
   }
+
+  //console.log(certifdata)
 
   //openModal("Scan this code to accept a connectionless credential:");
   //openModal("סרקו את הברקוד על ידי אפליקציית הארנק הדיגיטלי שלכם:");

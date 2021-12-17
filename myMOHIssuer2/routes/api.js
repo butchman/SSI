@@ -29,18 +29,14 @@ const getMOHInvite = async () => {
   }
 }
 
-
 router.post('/issue', cors(), async function (req, res) {
   let params = {
-    definitionId: process.env.CRED_DEF_ID_MOH,
+    definitionId: process.env.CRED_DEF_ID_MOH_GREEN_PASS,
     automaticIssuance: true,
     credentialValues: {
       "ID": req.body.theID,
       "Name": req.body.theName,
-      "DOB": req.body.theDOB,
-	  "HMO": req.body.theHMO,
-      "Type": req.body.theType,
-      "Manuf": req.body.theManuf,
+      "Reason": req.body.theReason,
       "Issued": req.body.theIssued,
       "Valid": req.body.theValid,
     }

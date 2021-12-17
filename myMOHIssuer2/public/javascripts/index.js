@@ -66,7 +66,7 @@ async function verifyPersonRedirect() {
     //openModal("Scan this code to verify the passport credential:");
     //openModal("סרקו את הברקוד על ידי אפליקציית הארנק הדיגיטלי שלכם:");
     //openModal("סרקו את הברקוד בעזרת אפליקציית הארנק הדיגיטלי שלכם:");
-    openModal("סרקו את הברקוד בעזרת אפליקציית הארנק הדיגיטלי שלכם3333:");
+    openModal("סרקו את הברקוד בעזרת אפליקציית הארנק הדיגיטלי שלכם:");
     //openModal("scoobydoo");
     hideQRCode();
     showSpinner();
@@ -92,11 +92,11 @@ async function verifyPersonRedirect() {
     closeModal();
     if (verification.state === "Accepted") {
       //var theURL = window.location.protocol + '//' + window.location.hostname + '/verifiedMOHUser.html';
-	  var theURL = window.location.origin + '/verifiedMOHUser2.html';
-      var theParams = '?userid=' + verification.proof.persondetailsfull.attributes["ID"] + '&idtype=' + verification.proof.persondetailsfull.attributes["IDtype"];
-      theParams = theParams + '&username=' + verification.proof.persondetailsfull.attributes["Name"] + '&address=' + verification.proof.persondetailsfull.attributes["Address"];
-      theParams = theParams + '&city=' + verification.proof.persondetailsfull.attributes["City"] + '&dob=' + verification.proof.persondetailsfull.attributes["DOB"];
-      theParams = theParams + '&valid=' + verification.proof.persondetailsfull.attributes["Valid"];
+	    var theURL = window.location.origin + '/verifiedMOHUser2.html';
+      var theParams = '?id_userid=' + verification.proof.תעודת_זהות.attributes["ID"] + '&id_username=' + verification.proof.תעודת_זהות.attributes["Name"];
+      theParams = theParams + '&id_valid=' + verification.proof.תעודת_זהות.attributes["Valid"];
+      theParams = theParams + '&vac_userid=' + verification.proof.תעודת_חיסון.attributes["ID"] + '&vac_username=' + verification.proof.תעודת_חיסון.attributes["Name"];
+      theParams = theParams + '&vac_valid=' + verification.proof.תעודת_חיסון.attributes["Valid"];
       window.location.replace(theURL+theParams);
     }
 }

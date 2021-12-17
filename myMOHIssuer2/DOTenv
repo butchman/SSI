@@ -11,6 +11,7 @@ ACCESSTOKMOH2='u_EQ2CvLem3EwsHdarhsF_YOg7yDLc6hQZmgj5_jy5w'
 # ------------- Credential Definition ----------------- #
 CRED_DEF_ID='TzbaS8mXimZLbXUgQsdJDc:3:CL:218188:Default'
 CRED_DEF_ID_MOH='S9kgACxeyWC6i7sfC7gRqy:3:CL:219054:Default'
+CRED_DEF_ID_MOH_GREEN_PASS='CxZdq6AQFaC8gbYs6qBFgV:3:CL:275374:Default'
 
 # ------------- Policy Id ----------------------------- #
 POLICY_ID_PERSON_AND_VACCINE='e809b4de-11c5-4880-aee7-08d9c0b7f06b'
@@ -19,3 +20,4 @@ POLICY_ID_PERSON_AND_VACCINE2='cf9ef9a7-c5c8-4404-55ed-08d9c0c31ba9'
 # ------------- Sovrin Staging Schema ----------------- #
 SCHEMA_ID='TzbaS8mXimZLbXUgQsdJDc:2:תעודת_זהות:1.0'
 SCHEMA_ID_MOH='S9kgACxeyWC6i7sfC7gRqy:2:תעודת_חיסון:1.00'
+SCHEMA_ID_MOH_GREEN_PASS='CxZdq6AQFaC8gbYs6qBFgV:2:תו_ירוק_קורונה:1.0'
