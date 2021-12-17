@@ -13,6 +13,12 @@ async function issueGreenPass2(anSTR1) {
 
   var namefix = username[1]
   namefix = namefix.replace("+", " ");
+  
+  var today = new Date();
+  var today_short = today.toISOString().split("T")[0];
+
+  var next_year = new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+  var next_year_short = next_year.toISOString().split("T")[0]
 
   const certifdata = {
       theID: userid[1],
@@ -21,8 +27,8 @@ async function issueGreenPass2(anSTR1) {
 	  theHMO:'Maccabi',
       theType:'Covid-19',
       theManuf:'Pfizer',
-      theIssued:"2021-01-01",
-      theValid:"2021-12-31",
+      theIssued:today_short,
+      theValid:next_year_short,
   }
 
   //openModal("Scan this code to accept a connectionless credential:");
