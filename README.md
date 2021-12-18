@@ -6,7 +6,7 @@ I've created a couple of use cases for creating a certificate (Personal Identity
 Next step will be to combine information/certificates from 2 sources to get a third one OR prove something. 
 
 
-Available demos:
+Available demos: <br/>
 issue ID card
 http://ec2-18-117-158-106.us-east-2.compute.amazonaws.com:3000/
 
