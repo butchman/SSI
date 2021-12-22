@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>הבנק החביב עליך</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/qrjs2@0.1.6/qrjs2.js"></script>
+  <script src="javascripts/index.js"></script>
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+
+<script>
+  var queryString = window.location.search;
+  var urlParams = new URLSearchParams(queryString);
+  var id_userid = urlParams.get('id_userid')
+  var id_username = urlParams.get('id_username')
+  var id_address = urlParams.get('id_address')
+  var id_city = urlParams.get('id_city')
+  var id_dob = urlParams.get('id_dob')
+  var id_valid = urlParams.get('id_valid')
+  var verificationid = urlParams.get('verificationid')
+  var bank_userid = urlParams.get('bank_userid')
+  var bank_bankid = urlParams.get('bank_bankid')
+  var bank_branchid = urlParams.get('bank_branchid')
+  var bank_accountid = urlParams.get('bank_accountid')
+
+  var userdata = encodeURIComponent(urlParams)
+
+  if (id_userid == null)
+    id_userid = ''
+  if (id_username == null)
+    id_username = ''
+  if (id_address == null)
+    id_address = ''
+  if (id_city == null)
+    id_city = ''
+  if (id_dob == null)
+    id_dob = ''
+  if (id_valid == null)
+    id_valid = ''
+  if (verificationid == null)
+    verificationid = ''
+  if (bank_userid == null)
+    bank_userid = ''
+  if (bank_bankid == null)
+    bank_bankid = ''
+  if (bank_branchid == null)
+    bank_branchid = ''
+  if (bank_accountid == null)
+    bank_accountid = ''
+
+  var today = new Date();
+  var yyyy = today.getFullYear();
+  var id_date = 0
+  var vac_date = 0
+
+  new_user = true;
+  user_ok = true;
+  certifs_valid = false;
+  var title_str = 'משתמש לא מזוהה'
+  var id_str = 'מספר זהות לא מזוהה'
+  var status_str = 'פרטי המשתמש שלך אינם זהים בתעודת הזהות ובתעודת החיסון, או שלא הוצגו פרטי תעודת הזהות ופרטי תעודת החיסון.'
+  var id_valid_status = 'תעודת הזהות שלך לא בתוקף.'
+  var vac_valid_status = 'חיסון הקורונה שלך לא בתוקף.'
+  var certif_str = 'לא זכאי/ת לקבל תו ירוק לקורונה.'
+
+  var line1 = 'משתמש לא מזוהה';
+  var line2 = 'תעודת הזהות אינה בתוקף, או שלא הצגת תעודת זהות.';
+  var line3 = '';
+  var line4 = '';
+
+
+  if (id_userid.length > 0) // we have ID card
+  {
+      if (bank_userid.length > 0 && id_userid == bank_userid) // we have BANK account and details are same
+      {
+        line1 = 'שלום ' + id_username + '.';
+        user_ok = true;
+        new_user = false;
+      }
+      else
+      {
+        line1 = 'שלום ' + id_username + '.'
+        user_ok = true;
+        new_user = true;
+      }
+  }
+  else
+  {
+    user_ok = false;
+  }
+
+  if (user_ok)
+  {
+    if (id_valid.length > 0)
+    {
+      id_date = Date.parse(id_valid)
+
+      if (id_date - today > 0)
+      {
+        id_valid_status = 'תעודת הזהות שלך בתוקף.'
+        line2 = 'תעודת הזהות שלך הוצגה בהצלחה והיא בתוקף.'
+        certifs_valid = true
+      }
+      else
+      {
+        line2 = 'תעודת הזהות שלך הוצגה בהצלחה, אך אינה בתוקף'
+      }
+
+    }
+    else
+    {
+      line2 = 'תעודת הזהות שלך הוצגה בהצלחה, אך אינה בתוקף'
+    }
+  }
+
+  if (new_user)
+  {
+    line3 = 'נראה כי אין לך חשבון בבנק זה, שנפתח לך חשבון חדש?'
+    line4 = 'ת.ז. :' + id_userid + '<br/>';
+    line4 = line4 + 'שם הלקוח: ' + id_username + '<br/>';
+    line4 = line4 + 'כתובת: ' + id_address + ' - ' + id_city + '<br/>';
+    line4 = line4 + 'תאריך לידה: ' + id_dob;
+  }
+  else
+  {
+    line3 = 'טוב לראות אותך שוב ' + id_username + ', מה ברצונך לעשות היום?';
+    line4 = 'בצד שמאל יופיעו הפעולות אותן ניתן לבצע בתור לקוח מזוהה של הבנק.'
+  }
+
+
+</script>
+
+<body>
+
+<!--Navbar-->
+<nav id="navbar" class="navbar navbar-dark">
+  <a class="navbar-brand nav-element" href="#">עמוד כניסה של הבנק החביב עליך</a>
+  <a class="nav-link nav-element navbar-text" href="https://trinsic.id" target="_blank"><img id="logo" src="images/portaldemologo-bank.png" alt="trinsic-logo"/></a>
+</nav>
+
+<!--Body-->
+<div class="container">
+  <div class="row">
+
+    <div class="col-5">
+      <div class="content">
+        <h4><span id="line1"></span></h4>
+        <h4><span id="line2"></span></h4>
+        <br/>
+        <h4><span id="line3"></span></h4>
+        <h4><span id="line4"></span></h4>
+        <script>
+          document.getElementById("line1").innerHTML = line1;
+          document.getElementById("line2").innerHTML = line2;
+          document.getElementById("line3").innerHTML = line3;
+          document.getElementById("line4").innerHTML = line4;
+        </script>
+      </div>
+    </div>
+    <div class="col-1"></div>
+    <div style="margin-top:150px; font-size:4em;">>></div>
+    <div class="col-5">
+      <div class="content">
+        <span id="certifpart"></span>
+        <script>
+
+          queryString = queryString + '&bank_userid=' + id_userid;
+          queryString = queryString + '&bank_bankid=' + padLeadingZeros(getNum(1) + 1,2);
+          queryString = queryString + '&bank_branchid=' + padLeadingZeros(getNum(3) + 1,3);
+          queryString = queryString + '&bank_accountid=' + createAccountID();
+
+          urlParams = new URLSearchParams(queryString);
+          userdatanew = encodeURIComponent(urlParams)
+
+          var thefiller = ''
+          if (certifs_valid)
+          {
+            if (new_user)
+            {
+              thefiller = '<h4>ניתן לבצע את הפעולות הבאות:</h4>'
+
+              thefiller = thefiller + '<button type="submit" class="btn btn-primary submit-button" id="cybercertif2" data-arg1="1234" onclick="issueBankAccountCertif(\''
+              thefiller = thefiller + userdatanew + '\')" style="margin-right:10px;">פתיחת חשבון בנק</button>'
+            }
+            else
+            {
+              thefiller = '<h4>ניתן לבצע את הפעולות הבאות:</h4>'
+              thefiller = thefiller + '<button type="submit" class="btn btn-primary submit-button" id="cybercertif2" onclick="issueCyberCertifDirect2()" style="margin-right:10px;">בירור מצב חשבון</button>'
+              thefiller = thefiller + '<br/><br/><br/>'
+              thefiller = thefiller + '<button type="submit" class="btn btn-primary submit-button" id="cybercertif1" onclick="issueCyberCertifWithConnection1()" style="margin-right:10px;">הזמנת פנקסי צקים</button>'
+              thefiller = thefiller + '<br/><br/><br/>'
+              thefiller = thefiller + '<button type="submit" class="btn btn-primary submit-button" id="login1" style="margin-right:10px;">ניהול הוראות קבע</button>'
+              thefiller = thefiller + '<br/><br/><br/>'
+              thefiller = thefiller + '<button type="submit" class="btn btn-primary submit-button" id="login1" style="margin-right:10px;">ניהול מטבע חוץ</button>'
+              thefiller = thefiller + '<br/><br/><br/>'
+            }
+          }
+
+          document.getElementById("certifpart").innerHTML = thefiller;
+        </script>
+
+        <div id="verification-accepted">
+          <h5>המידע אומת בהצלחה!</h5>
+          <div class="form-group">
+            <label for="verify-id">מספר מזהה:</label>
+            <input type="text" class="form-control" id="verify-id" disabled>
+          </div>
+          <div class="form-group">
+            <label for="verify-id-type">סוג תעודה:</label>
+            <select id="verify-id-type" disabled>
+              <option value="idcard">תעודת זהות</option>
+              <option value="rescard">כרטיס תושב</option>
+              <option value="municard">דיגיטל</option>
+              <option value="frgnpassport">דרכון זר</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="verify-name">שם:</label>
+            <input type="text" class="form-control" id="verify-name" disabled>
+          </div>
+          <div class="form-group">
+            <label for="verify-city">עיר:</label>
+            <input type="text" class="form-control" id="verify-city" disabled>
+          </div>
+          <div class="form-group">
+            <label for="verify-dob">תאריך לידה:</label>
+            <input type="date" class="form-control" id="verify-dob" disabled>
+          </div>
+          <div class="form-group">
+            <label for="verify-dov">תאריך תוקף:</label>
+            <input type="date" class="form-control" id="verify-dov" disabled>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+
+<div id="modal" class="modal">
+  <div id="modal-content">
+    <span id="close-button" onclick="closeModal()">&times;</span>
+    <p id="modal-text"></p>
+    <div class="centered-spinner d-flex justify-content-center">
+      <div id="spinner" class="spinner-border centered-spinner" role="status">
+        <span class="sr-only centered-spinner">Loading...</span>
+      </div>
+      <img id="qrcode" src="" alt="QR code"/>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("modal");
+  const modalText = document.getElementById("modal-text");
+  const spinner = document.getElementById("spinner");
+  const qr = document.getElementById("qrcode");
+  const accepted = document.getElementById("verification-accepted");
+
+  const acceptedName = document.getElementById("verify-name");
+  const acceptedIDType = document.getElementById("verify-id-type");
+  const acceptedID = document.getElementById("verify-id");
+  const acceptedCity = document.getElementById("verify-city");
+  const acceptedDOB = document.getElementById("verify-dob");
+  const acceptedValid = document.getElementById("verify-dov");
+
+  window.onclick = function(event) {
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+</script>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</body>
+
+</html>

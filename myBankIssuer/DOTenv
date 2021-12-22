@@ -1,0 +1,23 @@
+# ------------- App Data ---------------------------- #
+PORT = 3008
+ngrok = 0
+server = http://3.15.229.170
+
+# ------------- Developer Credentials ----------------- #
+#ACCESSTOK='baN-tMx3aI_4v3dfG7i2WrOrXYjUbc1JzWhUINRaDDE'
+ACCESSTOK='nXBdLlf8M4-P85OsIXwrIWvJOCWWOqMp-BjYjhhrhAY'
+
+# ------------- Credential Definition ----------------- #
+#CRED_DEF_ID='3oQojvzuDBEojMMFi3s59s:3:CL:218751:Default'
+CRED_DEF_ID='TzbaS8mXimZLbXUgQsdJDc:3:CL:218188:Default'
+CRED_DEF_ID_BANK='TzbaS8mXimZLbXUgQsdJDc:3:CL:275560:Default'
+
+# ------------- Policy Id ----------------------------- #
+#POLICY_ID='ec7e7635-a273-41f2-3b9c-08d92746f8d6'
+POLICY_ID='3afac6fb-1ab0-4084-ffdc-08d924517c64'
+POLICY_ID_BANK='10afdbac-e228-4af5-4547-08d9c4a372bf'
+
+# ------------- Sovrin Staging Schema ----------------- #
+#SCHEMA_ID='3oQojvzuDBEojMMFi3s59s:2:תעודת_זהות:1.00'
+SCHEMA_ID='TzbaS8mXimZLbXUgQsdJDc:2:תעודת_זהות:1.0'
+SCHEMA_ID_BANK='TzbaS8mXimZLbXUgQsdJDc:2:תעודת_חשבון_בנק:1.0'
