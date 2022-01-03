@@ -141,7 +141,7 @@ async function verifyPersonRedirect() {
       has_id_cert = theProof.hasOwnProperty('תעודת_זהות')
       has_bank_id_cert = theProof.hasOwnProperty('תעודת_חשבון_בנק')
 
-      var theURL = window.location.protocol + '//' + window.location.host + '/verifiedBankUser.html';
+      var theURL = window.location.origin + '/verifiedBankUser.html';
       var theParams = ''
 
       if (has_id_cert)
