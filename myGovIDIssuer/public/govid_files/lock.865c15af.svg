@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>lock</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12,16 C11.448,16 11,15.552 11,15 C11,14.448 11.448,14 12,14 C12.552,14 13,14.448 13,15 C13,15.552 12.552,16 12,16 M12,12 C10.346,12 9,13.346 9,15 C9,16.654 10.346,18 12,18 C13.654,18 15,16.654 15,15 C15,13.346 13.654,12 12,12 M18,19 C18,19.552 17.552,20 17,20 L7,20 C6.448,20 6,19.552 6,19 L6,11 C6,10.448 6.448,10 7,10 L8,10 L10,10 L14,10 L16,10 L17,10 C17.552,10 18,10.448 18,11 L18,19 Z M10,6.111 C10,4.947 10.897,4 12,4 C13.103,4 14,4.947 14,6.111 L14,8 L10,8 L10,6.111 Z M17,8 L16,8 L16,6.111 C16,3.845 14.206,2 12,2 C9.794,2 8,3.845 8,6.111 L8,8 L7,8 C5.346,8 4,9.346 4,11 L4,19 C4,20.654 5.346,22 7,22 L17,22 C18.654,22 20,20.654 20,19 L20,11 C20,9.346 18.654,8 17,8 L17,8 Z" id="path-1"></path>
+    </defs>
+    <g id="lock" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="🎨-Icon-Сolor" fill="#0D1C2E" fill-rule="nonzero" xlink:href="#path-1"></use>
+    </g>
+</svg>
