@@ -12,7 +12,7 @@ const http = require('http');
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '3010');
 const use_ngrok = process.env.ngrok || 1;
 const server_address = process.env.server || '127.0.0.1';
 app.set('port', port);
