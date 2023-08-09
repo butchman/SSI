@@ -38,10 +38,11 @@ router.post('/issue', cors(), async function (req, res) {
 });
 
 router.post('/myissue', cors(), async function (req, res) {
+  console.log('api.js - myissue - #1')
   const invite = await getInvite();
   const attribs = JSON.stringify(req.body);
 
-  console.log('api.js - myissue')
+  console.log('api.js - myissue #2')
 
   cache.add(invite.connectionId, attribs);
   res.status(200).send({ invitation: invite.invitationUrl });
