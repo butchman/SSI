@@ -62,6 +62,8 @@ async function verifyPerson() {
 }
 
 async function verifyPersonRedirect() {
+    console.log('dir=public/javascripts | file=index.js - function=verifyPersonRedirect - 0')
+
     hideAccepted();
     //openModal("Scan this code to verify the passport credential:");
     //openModal("סרקו את הברקוד על ידי אפליקציית הארנק הדיגיטלי שלכם:");
@@ -69,13 +71,14 @@ async function verifyPersonRedirect() {
     //openModal("scoobydoo");
     hideQRCode();
     showSpinner();
+
     let response = await axios.post('/api/verify');
     let verificationId = response.data.verificationId;
     setQRCodeImage(response.data.verificationRequestUrl);
     hideSpinner();
     showQRCode();
 
-    console.log('dir=public/javascripts | file=index.js - function=verifyPersonRedirect - 1')
+    console.log('dir=public/javascripts | file=index.js - function=verifyPersonRedirect - 1');
 
     let verification = {state: "Requested"};
     let timedOut = false;
@@ -90,17 +93,22 @@ async function verifyPersonRedirect() {
         //console.log("verf_obj=" + verf_obj);        
     }
 
-    console.log('dir=public/javascripts | file=index.js - function=verifyPersonRedirect - 2')
+    console.log('dir=public/javascripts | file=index.js - function=verifyPersonRedirect - 2');
     console.log("verification.state=" + verification.state);
 
     hideQRCode();
     closeModal();
     if (verification.state === "Accepted") {
-      console.log('dir=public/javascripts | file=index.js - function=verifyPersonRedirect - verification.state=Accepted')
+      console.log('dir=public/javascripts | file=index.js - function=verifyPersonRedirect - verification.state=Accepted');
+      
       var theURL = window.location.origin + '/verifiedUser.html';
       var theParams = '?userid=' + verification.proof.getpersondetails.attributes["ID"] + '&idtype=' + verification.proof.getpersondetails.attributes["IDtype"];
       theParams = theParams + '&username=' + verification.proof.getpersondetails.attributes["Name"] + '&city=' + verification.proof.getpersondetails.attributes["City"]
       theParams = theParams + '&dob=' + verification.proof.getpersondetails.attributes["DOB"] + '&valid=' + verification.proof.getpersondetails.attributes["Valid"]
+      
+      console.log('theURL='+theURL);
+      console.log('theParams='+theParams);
+      
       window.location.replace(theURL+theParams);
     }
 }
