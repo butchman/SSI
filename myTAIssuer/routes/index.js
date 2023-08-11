@@ -44,6 +44,7 @@ router.post('/webhook', async function (req, res) {
         await client.createCredential(params);
       }
     }
+
   }
   catch (e) {
     console.log(e.message || e.toString());
