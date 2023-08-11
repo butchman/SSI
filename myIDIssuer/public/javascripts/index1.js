@@ -1,3 +1,5 @@
+console.log("public/javascript dir | index1.js #1");
+
 async function issueIDwithConnection() {
     const bizCard = {
         ID: document.getElementById("issue-id").value,

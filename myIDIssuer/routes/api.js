@@ -5,6 +5,8 @@ const { CredentialsServiceClient, Credentials } = require("@trinsic/service-clie
 const cache = require('../model');
 require('dotenv').config();
 
+console.log("main dir | api.js #1");
+
 const client = new CredentialsServiceClient(
     new Credentials(process.env.ACCESSTOK),
     { noRetryPolicy: true });
