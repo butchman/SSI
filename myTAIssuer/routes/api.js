@@ -62,7 +62,7 @@ router.get('/checkVerification', cors(), async function (req, res) {
   let verification = await client.getVerification(verificationId);
 
   console.log('api.js - checkVerification - 1')
-  //console.log(verification)
+  console.log(verification)
 
   res.status(200).send({
     verification: verification

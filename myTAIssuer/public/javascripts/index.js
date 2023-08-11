@@ -44,7 +44,7 @@ async function verifyPerson() {
         verification = checkResponse.data.verification;
     }
 
-    console.log('index.js - verifyPerson - 1')
+    console.log('dir=public/javascripts | file=index.js - verifyPerson - 1')
 
     hideQRCode();
     closeModal();
@@ -75,17 +75,28 @@ async function verifyPersonRedirect() {
     hideSpinner();
     showQRCode();
 
+    console.log('dir=public/javascripts | file=index.js - function=verifyPersonRedirect - 1')
+
     let verification = {state: "Requested"};
     let timedOut = false;
     setTimeout(() => timedOut = true, 1000 * 60);
     while (!timedOut && verification.state === "Requested") {
         let checkResponse = await axios.get('/api/checkVerification', {params: {verificationId: verificationId }});
         verification = checkResponse.data.verification;
+
+        console.log("verification.state=" + verification.state);
+
+        //let verf_obj = JSON.parse(checkResponse.data);
+        //console.log("verf_obj=" + verf_obj);        
     }
+
+    console.log('dir=public/javascripts | file=index.js - function=verifyPersonRedirect - 2')
+    console.log("verification.state=" + verification.state);
 
     hideQRCode();
     closeModal();
     if (verification.state === "Accepted") {
+      console.log('dir=public/javascripts | file=index.js - function=verifyPersonRedirect - verification.state=Accepted')
       var theURL = window.location.origin + '/verifiedUser.html';
       var theParams = '?userid=' + verification.proof.getpersondetails.attributes["ID"] + '&idtype=' + verification.proof.getpersondetails.attributes["IDtype"];
       theParams = theParams + '&username=' + verification.proof.getpersondetails.attributes["Name"] + '&city=' + verification.proof.getpersondetails.attributes["City"]
