@@ -103,12 +103,12 @@ async function verifyPerson() {
     if (verification.state === "Accepted") {
         showAccepted();
         setAcceptedData(
-            verification.proof.getpersondetails.attributes["ID"],
-            verification.proof.getpersondetails.attributes["IDtype"],
-            verification.proof.getpersondetails.attributes["Name"],
-            verification.proof.getpersondetails.attributes["City"],
-            verification.proof.getpersondetails.attributes["DOB"],
-            verification.proof.getpersondetails.attributes["Valid"]
+            verification.proof.Teudat_zehut.attributes["ID"],
+            verification.proof.Teudat_zehut.attributes["IDtype"],
+            verification.proof.Teudat_zehut.attributes["Name"],
+            verification.proof.Teudat_zehut.attributes["City"],
+            verification.proof.Teudat_zehut.attributes["DOB"],
+            verification.proof.Teudat_zehut.attributes["Valid"]
         );
     }
 }
@@ -138,17 +138,17 @@ async function verifyPersonRedirect() {
 
       var theProof = verification.proof
 
-      has_id_cert = theProof.hasOwnProperty('תעודת_זהות')
-      has_bank_id_cert = theProof.hasOwnProperty('תעודת_חשבון_בנק')
+      has_id_cert = theProof.hasOwnProperty('Teudat_zehut')
+      has_bank_id_cert = theProof.hasOwnProperty('Teudat_heshbon_bank')
 
       var theURL = window.location.origin + '/verifiedBankUser.html';
       var theParams = ''
 
       if (has_id_cert)
       {
-        theParams = theParams + '?id_userid=' + verification.proof.תעודת_זהות.attributes["ID"] + '&id_username=' + verification.proof.תעודת_זהות.attributes["Name"];
-        theParams = theParams + '&id_address=' + verification.proof.תעודת_זהות.attributes["Address"] + '&id_city=' + verification.proof.תעודת_זהות.attributes["City"];
-        theParams = theParams + '&id_dob=' + verification.proof.תעודת_זהות.attributes["DOB"] + '&id_valid=' + verification.proof.תעודת_זהות.attributes["Valid"];
+        theParams = theParams + '?id_userid=' + verification.proof.Teudat_zehut.attributes["ID"] + '&id_username=' + verification.proof.Teudat_zehut.attributes["Name"];
+        theParams = theParams + '&id_address=' + verification.proof.Teudat_zehut.attributes["Address"] + '&id_city=' + verification.proof.Teudat_zehut.attributes["City"];
+        theParams = theParams + '&id_dob=' + verification.proof.Teudat_zehut.attributes["DOB"] + '&id_valid=' + verification.proof.Teudat_zehut.attributes["Valid"];
       }
 
       console.log(theParams)
@@ -157,13 +157,13 @@ async function verifyPersonRedirect() {
       {
         if (theParams.length > 0)
         {
-          theParams = theParams + '&bank_userid=' + verification.proof.תעודת_חשבון_בנק.attributes["ID"] + '&bank_bankid=' + verification.proof.תעודת_חשבון_בנק.attributes["Bank_id"];
-          theParams = theParams + '&bank_branchid=' + verification.proof.תעודת_חשבון_בנק.attributes["Branch_id"] + '&bank_accountid=' + verification.proof.תעודת_חשבון_בנק.attributes["Account_id"];
+          theParams = theParams + '&bank_userid=' + verification.proof.Teudat_heshbon_bank.attributes["ID"] + '&bank_bankid=' + verification.proof.Teudat_heshbon_bank.attributes["Bank_id"];
+          theParams = theParams + '&bank_branchid=' + verification.proof.Teudat_heshbon_bank.attributes["Branch_id"] + '&bank_accountid=' + verification.proof.Teudat_heshbon_bank.attributes["Account_id"];
         }
         else
         {
-          theParams = theParams + '?bank_userid=' + verification.proof.תעודת_חשבון_בנק.attributes["ID"] + '&bank_bankid=' + verification.proof.תעודת_חשבון_בנק.attributes["Bank_id"];
-          theParams = theParams + '&bank_branchid=' + verification.proof.תעודת_חשבון_בנק.attributes["Branch_id"] + '&bank_accountid=' + verification.proof.תעודת_חשבון_בנק.attributes["Account_id"];
+          theParams = theParams + '?bank_userid=' + verification.proof.Teudat_heshbon_bank.attributes["ID"] + '&bank_bankid=' + verification.proof.Teudat_heshbon_bank.attributes["Bank_id"];
+          theParams = theParams + '&bank_branchid=' + verification.proof.Teudat_heshbon_bank.attributes["Branch_id"] + '&bank_accountid=' + verification.proof.Teudat_heshbon_bank.attributes["Account_id"];
         }
       }
 

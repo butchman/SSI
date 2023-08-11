@@ -100,11 +100,15 @@ async function verifyPersonRedirect() {
     closeModal();
     if (verification.state === "Accepted") {
       console.log('dir=public/javascripts | file=index.js - function=verifyPersonRedirect - verification.state=Accepted');
-      
+
+      console.log("Accepted verification=" + verification);
+      const myJSON = JSON.stringify(verification);
+      console.log(myJSON);
+
       var theURL = window.location.origin + '/verifiedUser.html';
-      var theParams = '?userid=' + verification.proof.getpersondetails.attributes["ID"] + '&idtype=' + verification.proof.getpersondetails.attributes["IDtype"];
-      theParams = theParams + '&username=' + verification.proof.getpersondetails.attributes["Name"] + '&city=' + verification.proof.getpersondetails.attributes["City"]
-      theParams = theParams + '&dob=' + verification.proof.getpersondetails.attributes["DOB"] + '&valid=' + verification.proof.getpersondetails.attributes["Valid"]
+      var theParams = '?userid=' + verification.proof.Teudat_zehut.attributes["ID"] + '&idtype=' + verification.proof.Teudat_zehut.attributes["IDtype"];
+      theParams = theParams + '&username=' + verification.proof.Teudat_zehut.attributes["Name"] + '&city=' + verification.proof.Teudat_zehut.attributes["City"]
+      theParams = theParams + '&dob=' + verification.proof.Teudat_zehut.attributes["DOB"] + '&valid=' + verification.proof.Teudat_zehut.attributes["Valid"]
       
       console.log('theURL='+theURL);
       console.log('theParams='+theParams);
