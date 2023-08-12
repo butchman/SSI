@@ -51,12 +51,12 @@ async function verifyPerson() {
     if (verification.state === "Accepted") {
         showAccepted();
         setAcceptedData(
-            verification.proof.getpersondetails.attributes["ID"],
-            verification.proof.getpersondetails.attributes["IDtype"],
-            verification.proof.getpersondetails.attributes["Name"],
-            verification.proof.getpersondetails.attributes["City"],
-            verification.proof.getpersondetails.attributes["DOB"],
-            verification.proof.getpersondetails.attributes["Valid"]
+            verification.proof.getshortpersondetailswithcreds.attributes["ID"],
+            verification.proof.getshortpersondetailswithcreds.attributes["IDtype"],
+            verification.proof.getshortpersondetailswithcreds.attributes["Name"],
+            verification.proof.getshortpersondetailswithcreds.attributes["City"],
+            verification.proof.getshortpersondetailswithcreds.attributes["DOB"],
+            verification.proof.getshortpersondetailswithcreds.attributes["Valid"]
         );
     }
 }
@@ -106,9 +106,9 @@ async function verifyPersonRedirect() {
       console.log(myJSON);
 
       var theURL = window.location.origin + '/verifiedUser.html';
-      var theParams = '?userid=' + verification.proof.Teudat_zehut.attributes["ID"] + '&idtype=' + verification.proof.Teudat_zehut.attributes["IDtype"];
-      theParams = theParams + '&username=' + verification.proof.Teudat_zehut.attributes["Name"] + '&city=' + verification.proof.Teudat_zehut.attributes["City"]
-      theParams = theParams + '&dob=' + verification.proof.Teudat_zehut.attributes["DOB"] + '&valid=' + verification.proof.Teudat_zehut.attributes["Valid"]
+      var theParams = '?userid=' + verification.proof.getshortpersondetailswithcreds.attributes["ID"] + '&idtype=' + verification.proof.getshortpersondetailswithcreds.attributes["IDtype"];
+      theParams = theParams + '&username=' + verification.proof.getshortpersondetailswithcreds.attributes["Name"] + '&city=' + verification.proof.getshortpersondetailswithcreds.attributes["City"]
+      theParams = theParams + '&dob=' + verification.proof.getshortpersondetailswithcreds.attributes["DOB"] + '&valid=' + verification.proof.getshortpersondetailswithcreds.attributes["Valid"]
       
       console.log('theURL='+theURL);
       console.log('theParams='+theParams);

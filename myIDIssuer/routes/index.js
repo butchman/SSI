@@ -8,7 +8,7 @@ const client = new CredentialsServiceClient(
     new Credentials(process.env.ACCESSTOK),
     { noRetryPolicy: true });
 
-console.log("main dir | index.js #1");
+console.log("dir=routes | file=index.js #1");
 
 /* GET home page */
 router.get('/', function(req, res, next) {

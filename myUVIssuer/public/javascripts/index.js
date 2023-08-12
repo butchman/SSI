@@ -50,12 +50,12 @@ async function verifyPerson() {
     if (verification.state === "Accepted") {
         showAccepted();
         setAcceptedData(
-            verification.proof.getpersondetails.attributes["ID"],
-            verification.proof.getpersondetails.attributes["IDtype"],
-            verification.proof.getpersondetails.attributes["Name"],
-            verification.proof.getpersondetails.attributes["City"],
-            verification.proof.getpersondetails.attributes["DOB"],
-            verification.proof.getpersondetails.attributes["Valid"]
+            verification.proof.getshortpersondetailswithcreds.attributes["ID"],
+            verification.proof.getshortpersondetailswithcreds.attributes["IDtype"],
+            verification.proof.getshortpersondetailswithcreds.attributes["Name"],
+            verification.proof.getshortpersondetailswithcreds.attributes["City"],
+            verification.proof.getshortpersondetailswithcreds.attributes["DOB"],
+            verification.proof.getshortpersondetailswithcreds.attributes["Valid"]
         );
     }
 }
@@ -88,8 +88,8 @@ async function verifyPersonRedirect() {
     if (verification.state === "Accepted") {
       //var theURL = window.location.protocol + '//' + window.location.hostname + '/verifiedUVUser.html';
 	  var theURL = window.location.origin + '/verifiedUVUser.html';
-      var theParams = '?userid=' + verification.proof.getpersondetailsmin1.attributes["ID"] + '&idtype=' + verification.proof.getpersondetailsmin1.attributes["IDtype"];
-      theParams = theParams + '&username=' + verification.proof.getpersondetailsmin1.attributes["Name"] + '&valid=' + verification.proof.getpersondetailsmin1.attributes["Valid"];
+      var theParams = '?userid=' + verification.proof.getshortpersondetailswithcreds.attributes["ID"] + '&idtype=' + verification.proof.getshortpersondetailswithcreds.attributes["IDtype"];
+      theParams = theParams + '&username=' + verification.proof.getshortpersondetailswithcreds.attributes["Name"] + '&valid=' + verification.proof.getshortpersondetailswithcreds.attributes["Valid"];
       window.location.replace(theURL+theParams);
     }
 }

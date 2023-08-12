@@ -51,12 +51,12 @@ async function verifyPerson() {
     if (verification.state === "Accepted") {
         showAccepted();
         setAcceptedData(
-            verification.proof.getpersondetails.attributes["ID"],
-            verification.proof.getpersondetails.attributes["IDtype"],
-            verification.proof.getpersondetails.attributes["Name"],
-            verification.proof.getpersondetails.attributes["City"],
-            verification.proof.getpersondetails.attributes["DOB"],
-            verification.proof.getpersondetails.attributes["Valid"]
+            verification.proof.getshortpersondetailswithcreds.attributes["ID"],
+            verification.proof.getshortpersondetailswithcreds.attributes["IDtype"],
+            verification.proof.getshortpersondetailswithcreds.attributes["Name"],
+            verification.proof.getshortpersondetailswithcreds.attributes["City"],
+            verification.proof.getshortpersondetailswithcreds.attributes["DOB"],
+            verification.proof.getshortpersondetailswithcreds.attributes["Valid"]
         );
     }
 }
@@ -87,9 +87,9 @@ async function verifyPersonRedirect() {
     closeModal();
     if (verification.state === "Accepted") {
       var theURL = window.location.origin + '/verifiedUser.html';
-      var theParams = '?userid=' + verification.proof.getpersondetails.attributes["ID"] + '&idtype=' + verification.proof.getpersondetails.attributes["IDtype"];
-      theParams = theParams + '&username=' + verification.proof.getpersondetails.attributes["Name"] + '&city=' + verification.proof.getpersondetails.attributes["City"]
-      theParams = theParams + '&dob=' + verification.proof.getpersondetails.attributes["DOB"] + '&valid=' + verification.proof.getpersondetails.attributes["Valid"]
+      var theParams = '?userid=' + verification.proof.getshortpersondetailswithcreds.attributes["ID"] + '&idtype=' + verification.proof.getshortpersondetailswithcreds.attributes["IDtype"];
+      theParams = theParams + '&username=' + verification.proof.getshortpersondetailswithcreds.attributes["Name"] + '&city=' + verification.proof.getshortpersondetailswithcreds.attributes["City"]
+      theParams = theParams + '&dob=' + verification.proof.getshortpersondetailswithcreds.attributes["DOB"] + '&valid=' + verification.proof.getshortpersondetailswithcreds.attributes["Valid"]
       window.location.replace(theURL+theParams);
     }
 }

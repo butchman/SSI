@@ -5,7 +5,7 @@ const { CredentialsServiceClient, Credentials } = require("@trinsic/service-clie
 const cache = require('../model');
 require('dotenv').config();
 
-console.log("main dir | api.js #1");
+console.log("dir=routes | file=api.js #1");
 
 const client = new CredentialsServiceClient(
     new Credentials(process.env.ACCESSTOK),
@@ -64,8 +64,7 @@ router.get('/checkVerification', cors(), async function (req, res) {
   let verificationId = req.query.verificationId;
   let verification = await client.getVerification(verificationId);
 
-  console.log('api.js - checkVerification - 1')
-  //console.log(verification)
+  console.log('routers/api.js - checkVerification - 1')
 
   res.status(200).send({
     verification: verification

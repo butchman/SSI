@@ -50,12 +50,12 @@ async function verifyPerson() {
     if (verification.state === "Accepted") {
         showAccepted();
         setAcceptedData(
-            verification.proof.getpersondetails.attributes["ID"],
-            verification.proof.getpersondetails.attributes["IDtype"],
-            verification.proof.getpersondetails.attributes["Name"],
-            verification.proof.getpersondetails.attributes["City"],
-            verification.proof.getpersondetails.attributes["DOB"],
-            verification.proof.getpersondetails.attributes["Valid"]
+            verification.proof.persondetailsfull.attributes["ID"],
+            verification.proof.persondetailsfull.attributes["IDtype"],
+            verification.proof.persondetailsfull.attributes["Name"],
+            verification.proof.persondetailsfull.attributes["City"],
+            verification.proof.persondetailsfull.attributes["DOB"],
+            verification.proof.persondetailsfull.attributes["Valid"]
         );
     }
 }
