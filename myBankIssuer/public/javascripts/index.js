@@ -103,12 +103,12 @@ async function verifyPerson() {
     if (verification.state === "Accepted") {
         showAccepted();
         setAcceptedData(
-            verification.proof.Teudat_zehut.attributes["ID"],
-            verification.proof.Teudat_zehut.attributes["IDtype"],
-            verification.proof.Teudat_zehut.attributes["Name"],
-            verification.proof.Teudat_zehut.attributes["City"],
-            verification.proof.Teudat_zehut.attributes["DOB"],
-            verification.proof.Teudat_zehut.attributes["Valid"]
+            verification.proof.getshortpersondetailswithcreds.attributes["ID"],
+            verification.proof.getshortpersondetailswithcreds.attributes["IDtype"],
+            verification.proof.getshortpersondetailswithcreds.attributes["Name"],
+            verification.proof.getshortpersondetailswithcreds.attributes["City"],
+            verification.proof.getshortpersondetailswithcreds.attributes["DOB"],
+            verification.proof.getshortpersondetailswithcreds.attributes["Valid"]
         );
     }
 }
