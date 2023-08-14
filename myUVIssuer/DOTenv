@@ -7,43 +7,43 @@ server = http://3.15.229.170
 # ORG ID of: Pnim (meir.zushnov)
 ACCESSTOK='q6n4groPE9RisITT9jSJwvQQZ0uTyrm8FHgvlF_4lY4'
 # ORG ID of: Pnim (shanbuv)
-ACCESSTOK='1eD_VnC3gDLKY_4rYQ_6KQf0KIocFzvbZEEkrMEbx2Y'
+#ACCESSTOK='1eD_VnC3gDLKY_4rYQ_6KQf0KIocFzvbZEEkrMEbx2Y'
 
 # ORG ID of: MALAG (meir.zushnov)
 ACCESSTOKMLG='uc-tLbZReu1_qWCx6sGm5o3UFz8RabBRFxf5a7PlNLw'
 
 # ORG ID of: MALAG (shanbuv)
-ACCESSTOKMLG='9cIIGz4pRPRxKfsJnzCq9DvgWQu_1tRLTi9Ew21z2_Y'
+#ACCESSTOKMLG='9cIIGz4pRPRxKfsJnzCq9DvgWQu_1tRLTi9Ew21z2_Y'
 
 # ------------- Credential Definition ----------------- #
 # Credential def of: Pnim (meir.zushnov)
 CRED_DEF_ID='MqeHeiLELoouLPu3JEqgAN:3:CL:12936:Default'
 
 # Credential def of: Pnim (shanbuv)
-CRED_DEF_ID='3YEZywnjv9HykzVSHB1Njw:3:CL:13015:Default'
+#CRED_DEF_ID='3YEZywnjv9HykzVSHB1Njw:3:CL:13015:Default'
 
 # Credential def of: MALAG (meir.zushnov)
 CRED_DEF_ID_MLG='CprWv3qT4cehZyzgEWXnTj:3:CL:13021:Default'
 
 # Credential def of: MALAG (shanbuv)
-CRED_DEF_ID_MLG='5qfY4ZXq7pDKsngTJpYnWT:3:CL:13030:Default'
+#CRED_DEF_ID_MLG='5qfY4ZXq7pDKsngTJpYnWT:3:CL:13030:Default'
 
 # ------------- Policy Id ----------------------------- #
 # verification : get short person details with creds [getshortpersondetailswithcreds] (meir.zushnov)
 POLICY_ID='a9576725-73fb-4561-d3fb-08db9b2f746d'
 
 # verification : get short person details with creds [getshortpersondetailswithcreds] (shanbuv)
-POLICY_ID='5336f36b-9380-493b-f8aa-08db9b31af1a'
+#POLICY_ID='5336f36b-9380-493b-f8aa-08db9b31af1a'
 
 # ------------- Sovrin Staging Schema ----------------- #
 # Schema ID of: Pnim (meir.zushnov)
 SCHEMA_ID='MqeHeiLELoouLPu3JEqgAN:2:Teudat_zehut:1.0'
 
 # Schema ID of: Pnim (shanbuv)
-SCHEMA_ID='3YEZywnjv9HykzVSHB1Njw:2:Teudat_zehut:1.0'
+#SCHEMA_ID='3YEZywnjv9HykzVSHB1Njw:2:Teudat_zehut:1.0'
 
 # Schema ID of: MALAG (meir.zushnov)
 SCHEMA_ID_MLG='CprWv3qT4cehZyzgEWXnTj:2:Teudat_course:1.0'
 
 # Schema ID of: MALAG (shanbuv)
-SCHEMA_ID_MLG='5qfY4ZXq7pDKsngTJpYnWT:2:Teudat_course:1.0'
+#SCHEMA_ID_MLG='5qfY4ZXq7pDKsngTJpYnWT:2:Teudat_course:1.0'
