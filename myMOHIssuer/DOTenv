@@ -30,11 +30,11 @@ CRED_DEF_ID_MOH='NALewzv7TBDSW7tEmCtsKP:3:CL:13419:Default'
 #CRED_DEF_ID_MOH='2MmjELPwjcDDDCbAnvCuVr:3:CL:13417:Default'
 
 # ------------- Policy Id ----------------------------- #
-# verification : get short person details with creds [getshortpersondetailswithcreds] (meir.zushnov)
-POLICY_ID='a9576725-73fb-4561-d3fb-08db9b2f746d'
+# verification : get full person details with creds [getfullpersondetailswithcreds] (meir.zushnov)
+POLICY_ID='bad052dd-d498-4a5f-a345-08db9b4e946a'
 
-# verification : get short person details with creds [getshortpersondetailswithcreds] (shanbuv)
-#POLICY_ID='5336f36b-9380-493b-f8aa-08db9b31af1a'
+# verification : get full person details with creds [getfullpersondetailswithcreds] (shanbuv)
+#POLICY_ID='634f7f8f-2b26-4110-44fe-08db9b4e1ad1'
 
 # ------------- Sovrin Staging Schema ----------------- #
 # Schema ID of: Pnim (meir.zushnov)

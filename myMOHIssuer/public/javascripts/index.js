@@ -50,12 +50,12 @@ async function verifyPerson() {
     if (verification.state === "Accepted") {
         showAccepted();
         setAcceptedData(
-            verification.proof.persondetailsfull.attributes["ID"],
-            verification.proof.persondetailsfull.attributes["IDtype"],
-            verification.proof.persondetailsfull.attributes["Name"],
-            verification.proof.persondetailsfull.attributes["City"],
-            verification.proof.persondetailsfull.attributes["DOB"],
-            verification.proof.persondetailsfull.attributes["Valid"]
+            verification.proof.getfullpersondetailswithcreds.attributes["ID"],
+            verification.proof.getfullpersondetailswithcreds.attributes["IDtype"],
+            verification.proof.getfullpersondetailswithcreds.attributes["Name"],
+            verification.proof.getfullpersondetailswithcreds.attributes["City"],
+            verification.proof.getfullpersondetailswithcreds.attributes["DOB"],
+            verification.proof.getfullpersondetailswithcreds.attributes["Valid"]
         );
     }
 }
@@ -66,7 +66,6 @@ async function verifyPersonRedirect() {
     //openModal("Scan this code to verify the passport credential:");
     //openModal("סרקו את הברקוד על ידי אפליקציית הארנק הדיגיטלי שלכם:");
     openModal("סרקו את הברקוד בעזרת אפליקציית הארנק הדיגיטלי שלכם:");
-    //openModal("scoobydoo");
     hideQRCode();
     showSpinner();
     let response = await axios.post('/api/verify');
@@ -88,10 +87,10 @@ async function verifyPersonRedirect() {
     if (verification.state === "Accepted") {
       //var theURL = window.location.protocol + '//' + window.location.hostname + '/verifiedMOHUser.html';
 	  var theURL = window.location.origin + '/verifiedMOHUser.html';
-      var theParams = '?userid=' + verification.proof.persondetailsfull.attributes["ID"] + '&idtype=' + verification.proof.persondetailsfull.attributes["IDtype"];
-      theParams = theParams + '&username=' + verification.proof.persondetailsfull.attributes["Name"] + '&address=' + verification.proof.persondetailsfull.attributes["Address"];
-      theParams = theParams + '&city=' + verification.proof.persondetailsfull.attributes["City"] + '&dob=' + verification.proof.persondetailsfull.attributes["DOB"];
-      theParams = theParams + '&valid=' + verification.proof.persondetailsfull.attributes["Valid"];
+      var theParams = '?userid=' + verification.proof.getfullpersondetailswithcreds.attributes["ID"] + '&idtype=' + verification.proof.getfullpersondetailswithcreds.attributes["IDtype"];
+      theParams = theParams + '&username=' + verification.proof.getfullpersondetailswithcreds.attributes["Name"] + '&address=' + verification.proof.getfullpersondetailswithcreds.attributes["Address"];
+      theParams = theParams + '&city=' + verification.proof.getfullpersondetailswithcreds.attributes["City"] + '&dob=' + verification.proof.getfullpersondetailswithcreds.attributes["DOB"];
+      theParams = theParams + '&valid=' + verification.proof.getfullpersondetailswithcreds.attributes["Valid"];
       window.location.replace(theURL+theParams);
     }
 }
