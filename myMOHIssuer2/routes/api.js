@@ -10,7 +10,7 @@ const client = new CredentialsServiceClient(
     { noRetryPolicy: true });
 
 const clientMOH = new CredentialsServiceClient(
-    new Credentials(process.env.ACCESSTOKMOH2),
+    new Credentials(process.env.ACCESSTOKMOH),
     { noRetryPolicy: true });
 
 const getInvite = async () => {
@@ -59,7 +59,7 @@ router.post('/myissue', cors(), async function (req, res) {
 router.post('/verify', cors(), async function (req, res) {
   //let verification = await client.createVerificationFromPolicy(process.env.POLICY_ID);
 
-  let verification = await clientMOH.createVerificationFromPolicy(process.env.POLICY_ID_PERSON_AND_VACCINE2);
+  let verification = await clientMOH.createVerificationFromPolicy(process.env.POLICY_ID_PERSON_AND_VACCINE);
 
   console.log('api.js - verify - 1')
 
