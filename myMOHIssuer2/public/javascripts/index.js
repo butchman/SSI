@@ -50,12 +50,12 @@ async function verifyPerson() {
     if (verification.state === "Accepted") {
         showAccepted();
         setAcceptedData(
-            verification.proof.getpersondetails.attributes["ID"],
-            verification.proof.getpersondetails.attributes["IDtype"],
-            verification.proof.getpersondetails.attributes["Name"],
-            verification.proof.getpersondetails.attributes["City"],
-            verification.proof.getpersondetails.attributes["DOB"],
-            verification.proof.getpersondetails.attributes["Valid"]
+            verification.proof.zehut.attributes["ID"],
+            verification.proof.zehut.attributes["Name"],
+            verification.proof.zehut.attributes["Valid"],
+            verification.proof.covidvaccine.attributes["ID"],
+            verification.proof.covidvaccine.attributes["Name"],
+            verification.proof.covidvaccine.attributes["Valid"]
         );
     }
 }
@@ -93,10 +93,10 @@ async function verifyPersonRedirect() {
     if (verification.state === "Accepted") {
       //var theURL = window.location.protocol + '//' + window.location.hostname + '/verifiedMOHUser.html';
 	    var theURL = window.location.origin + '/verifiedMOHUser2.html';
-      var theParams = '?id_userid=' + verification.proof.תעודת_זהות.attributes["ID"] + '&id_username=' + verification.proof.תעודת_זהות.attributes["Name"];
-      theParams = theParams + '&id_valid=' + verification.proof.תעודת_זהות.attributes["Valid"];
-      theParams = theParams + '&vac_userid=' + verification.proof.תעודת_חיסון.attributes["ID"] + '&vac_username=' + verification.proof.תעודת_חיסון.attributes["Name"];
-      theParams = theParams + '&vac_valid=' + verification.proof.תעודת_חיסון.attributes["Valid"];
+      var theParams = '?id_userid=' + verification.proof.zehut.attributes["ID"] + '&id_username=' + verification.proof.zehut.attributes["Name"];
+      theParams = theParams + '&id_valid=' + verification.proof.zehut.attributes["Valid"];
+      theParams = theParams + '&vac_userid=' + verification.proof.covidvaccine.attributes["ID"] + '&vac_username=' + verification.proof.covidvaccine.attributes["Name"];
+      theParams = theParams + '&vac_valid=' + verification.proof.covidvaccine.attributes["Valid"];
       window.location.replace(theURL+theParams);
     }
 }
