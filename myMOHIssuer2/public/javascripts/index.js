@@ -43,12 +43,13 @@ async function verifyPerson() {
         verification = checkResponse.data.verification;
     }
 
-    console.log('index.js - verifyPerson - 1')
+    console.log("dir=public/javascript | file=index.js | function=verifyPerson | #1");
 
     hideQRCode();
     closeModal();
     if (verification.state === "Accepted") {
         showAccepted();
+        console.log("dir=public/javascript | file=index.js | function=verifyPerson | #2");
         setAcceptedData(
             verification.proof.zehut.attributes["ID"],
             verification.proof.zehut.attributes["Name"],
@@ -58,6 +59,8 @@ async function verifyPerson() {
             verification.proof.covidvaccine.attributes["Valid"]
         );
     }
+
+    console.log("dir=public/javascript | file=index.js | function=verifyPerson | #3");
 }
 
 async function verifyPersonRedirect() {
@@ -71,6 +74,8 @@ async function verifyPersonRedirect() {
     hideQRCode();
     showSpinner();
 
+    console.log("dir=public/javascript | file=index.js | function=verifyPersonRedirect | #1");
+
     let response = await axios.post('/api/verify');
     let verificationId = response.data.verificationId;
     setQRCodeImage(response.data.verificationRequestUrl);
@@ -82,15 +87,24 @@ async function verifyPersonRedirect() {
     let timedOut = false;
     setTimeout(() => timedOut = true, 1000 * 60);
     while (!timedOut && verification.state === "Requested") {
+        
+        console.log("dir=public/javascript | file=index.js | function=verifyPersonRedirect | #2");
+
         let checkResponse = await axios.get('/api/checkVerification', {params: {verificationId: verificationId }});
         verification = checkResponse.data.verification;
+
+        console.log("dir=public/javascript | file=index.js | function=verifyPersonRedirect | #3");
+        console.log(verification);
     }
 
-    //console.log('2222-3')
+    console.log("dir=public/javascript | file=index.js | function=verifyPersonRedirect | #4");
 
     hideQRCode();
     closeModal();
     if (verification.state === "Accepted") {
+      console.log("dir=public/javascript | file=index.js | function=verifyPersonRedirect | #5");
+      console.log(verification);
+
       //var theURL = window.location.protocol + '//' + window.location.hostname + '/verifiedMOHUser.html';
 	    var theURL = window.location.origin + '/verifiedMOHUser2.html';
       var theParams = '?id_userid=' + verification.proof.zehut.attributes["ID"] + '&id_username=' + verification.proof.zehut.attributes["Name"];

@@ -2,6 +2,9 @@ async function issueGreenPass3(anSTR1) {
 
   var userdata = decodeURIComponent(urlParams)
 
+  console.log("dir=public/javascripts | file=index1.js | function=issueGreenPass3 | #1");
+  console.log(userdata);
+
   //id_userid=000724057&id_username=מאיר+זושנוב&id_valid=2025-09-01&vac_userid=000724057&vac_username=מאיר+זושנוב&vac_valid=2021-12-31
 
   var data_arr = userdata.split("&");
@@ -21,10 +24,13 @@ async function issueGreenPass3(anSTR1) {
   const certifdata = {
       theID: userid[1],
       theName:namefix,
-	    theReason:'VACCINE',
+	  theReason:'VACCINE',
       theIssued:today_short,
       theValid:next_year_short,
   }
+
+  console.log("dir=public/javascripts | file=index1.js | function=issueGreenPass3 | #2");
+  console.log(certifdata);
 
   //console.log(certifdata)
 

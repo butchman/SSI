@@ -30,6 +30,9 @@ const getMOHInvite = async () => {
 }
 
 router.post('/issue', cors(), async function (req, res) {
+
+  console.log("dir=routes | file=api.js | function=issue | #1");
+
   let params = {
     definitionId: process.env.CRED_DEF_ID_MOH_GREEN_PASS,
     automaticIssuance: true,
@@ -41,6 +44,9 @@ router.post('/issue', cors(), async function (req, res) {
       "Valid": req.body.theValid,
     }
   }
+
+  console.log(params);
+
   let result = await clientMOH.createCredential(params);
 
   res.status(200).send({ offerData: result.offerData, offerUrl: result.offerUrl });
@@ -61,7 +67,7 @@ router.post('/verify', cors(), async function (req, res) {
 
   let verification = await clientMOH.createVerificationFromPolicy(process.env.POLICY_ID_PERSON_AND_VACCINE);
 
-  console.log('api.js - verify - 1')
+  console.log("dir=routes | file=api.js | function=verify | #1");
 
   res.status(200).send({
     verificationRequestData: verification.verificationRequestData,
@@ -74,8 +80,9 @@ router.get('/checkVerification', cors(), async function (req, res) {
   let verificationId = req.query.verificationId;
   let verification = await clientMOH.getVerification(verificationId);
 
-  console.log('api.js - checkVerification - 1')
-  //console.log(verification)
+  console.log("dir=routes | file=api.js | function=checkVerification | #1");
+
+  console.log(verification)
 
   res.status(200).send({
     verification: verification
