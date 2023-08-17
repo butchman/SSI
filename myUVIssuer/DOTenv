@@ -1,7 +1,7 @@
 # ------------- App Data ---------------------------- #
 PORT = 3004
 ngrok = 0
-server = http://3.15.229.170
+server = http://35.232.158.88
 
 # ------------- Developer Credentials ----------------- #
 # ORG ID of: Pnim (meir.zushnov)
