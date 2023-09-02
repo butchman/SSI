@@ -8,6 +8,10 @@ const app = require('../app');
 const debug = require('debug')('tmp:server');
 const http = require('http');
 
+const axios = require('axios');
+const ipcheckURL = 'http://api.ipify.org/?format=json';
+var myIP;
+
 /**
  * Get port from environment and store in Express.
  */
@@ -36,32 +40,44 @@ const client = new CredentialsServiceClient(
 const cache = require('../model');
 const ngrok = require('ngrok');
 
-server.listen(port, async function () {
-	if (use_ngrok > 0) 
-	{
-		const url_val = await ngrok.connect(port);
-		console.log("============= \n\n" + url_val + "\n\n =========");
-		let response = await client.createWebhook({
-			url: url_val + "/webhook",  // process.env.NGROK_URL
-			type: "Notification"
-		});
-		cache.add("webhookId", response.id);
-	} 
-	else 
-	{
-		const url_val = server_address+":"+server.address().port;
-		console.log("============= \n\n" + url_val + "\n\n =========");
-		let response = await client.createWebhook({
-			url: url_val + "/webhook",  // process.env.NGROK_URL
-			type: "Notification"
-		});
-		cache.add("webhookId", response.id);
-	}
-  
-  console.log('Listening on port %d', server.address().port);
-});
-server.on('error', onError);
-server.on('listening', onListening);
+(async () => {
+  try{
+    server.listen(port, async function () 
+    {
+      const response = await axios.get(ipcheckURL);
+      myIP = response.data.ip;
+      console.log('detected public IP is ',myIP);
+
+      if (use_ngrok > 0) 
+      {
+        const url_val = await ngrok.connect(port);
+        console.log("============= \n\n" + url_val + "\n\n =========");
+        let response = await client.createWebhook({
+          url: url_val + "/webhook",  // process.env.NGROK_URL
+          type: "Notification"
+        });
+        cache.add("webhookId", response.id);
+      } 
+      else 
+      {
+        const url_val = myIP+":"+server.address().port;
+        console.log("============= \n\n" + url_val + "\n\n =========");
+        let response = await client.createWebhook({
+          url: url_val + "/webhook",  // process.env.NGROK_URL
+          type: "Notification"
+        });
+        cache.add("webhookId", response.id);
+      }
+      console.log('Listening on port %d', server.address().port);
+    });
+    server.on('error', onError);
+    server.on('listening', onListening);
+  }
+  catch (error) {
+    console.log(error.response.body);
+  }
+
+})();
 
 /**
  * Normalize a port into a number, string, or false.
